@@ -1,7 +1,7 @@
 package com.mabanque.app.controller;
 
 import com.mabanque.app.entities.Customer;
-import com.mabanque.app.interfaces.InterfaceRegisterCustomer;
+import com.mabanque.app.services.RegisterCustomerWithAccountServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterController {
 
     @Autowired
-    private InterfaceRegisterCustomer interfaceRegisterCustomer;
+    private RegisterCustomerWithAccountServices registerCustomer;
 
     @PostMapping("/customer-with-account")
     public Customer registerCustomerWithAccount(@RequestBody Customer customer){
-       return interfaceRegisterCustomer.saveCustomerWithAccount(customer);
+       return registerCustomer.saveCustomerWithAccount(customer);
     }
 
 }

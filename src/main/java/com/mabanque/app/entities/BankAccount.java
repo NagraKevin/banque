@@ -34,14 +34,10 @@ public class BankAccount {
     @JoinColumn(name = "id_customer")
     private Customer customer;
 
-    @Transient
-    private static AtomicInteger generateAccountNumber = new AtomicInteger(1);
-
     public BankAccount(double amount, int maxAmount, Customer customer) {
         this.amount = amount;
         this.maxAmount = maxAmount;
         this.customer = customer;
-        this.accountNumber = generateAccountNumber.getAndIncrement();
     }
 
     public long getId() {
@@ -86,5 +82,9 @@ public class BankAccount {
 
     public int getAccountNumber() {
         return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }
