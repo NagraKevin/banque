@@ -42,6 +42,11 @@ public class Customer {
       this.email = email;
       this.password = password;
    }
+
+   public Customer(){
+
+   }
+
    public long getId() {
       return id;
    }
@@ -98,7 +103,7 @@ public class Customer {
       return password;
    }
 
-   public void setPassWord(String passWord) {
+   public void setPassWord(String password) {
       this.password = password;
    }
 }

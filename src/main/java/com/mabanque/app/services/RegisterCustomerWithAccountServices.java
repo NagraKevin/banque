@@ -4,6 +4,7 @@ import com.mabanque.app.entities.BankAccount;
 import com.mabanque.app.entities.Customer;
 import com.mabanque.app.interfaces.AccountNumberGenerator;
 import com.mabanque.app.interfaces.IbanNumberGenerator;
+import com.mabanque.app.model.CustomerMapper;
 import com.mabanque.app.repository.BankAccountRepository;
 import com.mabanque.app.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,23 @@ public class RegisterCustomerWithAccountServices {
     private AccountNumberGenerator accountNumberGenerator;
 
 
-    public Customer saveCustomerWithAccount(Customer customer) {
-        Customer newCustomer = customerRepository.save(customer);
+    public Customer saveCustomerWithAccount(CustomerMapper customer) {
+
+        Customer newCustomer = new Customer();
+        newCustomer.setFirstName(customer.getFirstName());
+        newCustomer.setLastName(customer.getLastName());
+        newCustomer.setPassWord(customer.getPassword());
+        newCustomer.setAddress(customer.getAddress());
+        newCustomer.setPhoneNumber(customer.getPhoneNumber());
+        newCustomer.setEmail(customer.getEmail());
+        newCustomer.setBirthDate(customer.getBirthDate());
+
+        customerRepository.save(newCustomer);
+
         BankAccount bankAccount = new BankAccount(0, 1500, newCustomer);
+
         saveBankAccount(newCustomer, bankAccount);
+
         return newCustomer;
     }
 
