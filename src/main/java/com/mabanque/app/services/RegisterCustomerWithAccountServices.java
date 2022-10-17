@@ -27,7 +27,6 @@ public class RegisterCustomerWithAccountServices {
     @Autowired
     private AccountNumberGenerator accountNumberGenerator;
 
-
     public Customer saveCustomerWithAccount(CustomerMapper customer) {
 
         Customer newCustomer = new Customer();
@@ -54,6 +53,10 @@ public class RegisterCustomerWithAccountServices {
         String numIban = ibanNumberGenerator.generateIbanNumber(bankAccount);
         bankAccount.setIbanNumber(numIban);
         return bankAccountRepository.save(bankAccount);
+    }
+
+    public void setCustomerRepository (CustomerRepository newCustomerRepository){
+        this.customerRepository = newCustomerRepository;
     }
 
 }

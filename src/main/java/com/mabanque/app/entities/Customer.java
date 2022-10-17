@@ -18,7 +18,7 @@ public class Customer {
    @Column(nullable = false)
    private String lastName;
 
-   @Column(nullable = false)
+   //@Column(nullable = false)
    @Temporal(TemporalType.DATE)
    private Date birthDate;
 
