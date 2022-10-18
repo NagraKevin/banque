@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -45,7 +46,7 @@ public class RegisterCustomerWithAccount {
     @Transactional
     public void when_save_customer_it_should_return_customer() {
         // given
-        CustomerMapper customerMapper = new CustomerMapper("test","azerty123","3 sq jacques babinet","061010101010","test1@hotmail.fr","test");
+        CustomerMapper customerMapper = new CustomerMapper("test","azerty123", LocalDate.of(1992, Month.JUNE, 14),"3 sq jacques babinet","061010101010","test1@hotmail.fr","test");
 
         // when
         Customer savedCustomer = registerCustomerWithAccountServices.saveCustomerWithAccount(customerMapper);

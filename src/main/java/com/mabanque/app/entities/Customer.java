@@ -3,6 +3,7 @@ package com.mabanque.app.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class Customer {
 
    //@Column(nullable = false)
    @Temporal(TemporalType.DATE)
-   private Date birthDate;
+   private LocalDate birthDate;
 
    @Column(nullable = false)
    private String address;
@@ -33,7 +34,7 @@ public class Customer {
 
    private String password;
 
-   public Customer(String firstName, String lastName, Date birthDate, String address, String phoneNumber, String email, String password ){
+   public Customer(String firstName, String lastName, LocalDate birthDate, String address, String phoneNumber, String email, String password ){
       this.firstName = firstName;
       this.lastName = lastName;
       this.birthDate = birthDate;
@@ -67,11 +68,11 @@ public class Customer {
       this.lastName = lastName;
    }
 
-   public Date getBirthDate() {
+   public LocalDate getBirthDate() {
       return birthDate;
    }
 
-   public void setBirthDate(Date birthDate) {
+   public void setBirthDate(LocalDate birthDate) {
       this.birthDate = birthDate;
    }
 
