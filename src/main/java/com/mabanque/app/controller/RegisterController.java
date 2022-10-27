@@ -2,7 +2,7 @@ package com.mabanque.app.controller;
 
 import com.mabanque.app.entities.Customer;
 import com.mabanque.app.model.CustomerMapper;
-import com.mabanque.app.services.RegisterCustomerWithAccountServices;
+import com.mabanque.app.services.RegisterCustomerWithAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterController {
 
     @Autowired
-    private RegisterCustomerWithAccountServices registerCustomer;
+    private RegisterCustomerWithAccountService registerCustomer;
 
     @PostMapping("/customer-with-account")
     public Customer registerCustomerWithAccount(@RequestBody CustomerMapper customer){

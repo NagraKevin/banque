@@ -1,10 +1,14 @@
 package com.mabanque.app.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="customer")
@@ -19,8 +23,7 @@ public class Customer {
    @Column(nullable = false)
    private String lastName;
 
-   //@Column(nullable = false)
-   @Temporal(TemporalType.DATE)
+   @Column(nullable = false)
    private LocalDate birthDate;
 
    @Column(nullable = false)
@@ -34,7 +37,11 @@ public class Customer {
 
    private String password;
 
-   public Customer(String firstName, String lastName, LocalDate birthDate, String address, String phoneNumber, String email, String password ){
+   @JsonIgnore
+   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+   private Collection<BankAccount> accounts;
+
+   public Customer(String firstName, String lastName, LocalDate birthDate, String address, String phoneNumber, String email, String password, ArrayList<BankAccount> bankAccounts){
       this.firstName = firstName;
       this.lastName = lastName;
       this.birthDate = birthDate;
@@ -42,6 +49,7 @@ public class Customer {
       this.phoneNumber = phoneNumber;
       this.email = email;
       this.password = password;
+      this.accounts = bankAccounts;
    }
 
    public Customer(){
@@ -106,5 +114,17 @@ public class Customer {
 
    public void setPassWord(String password) {
       this.password = password;
+   }
+
+   public Collection<BankAccount> getAccounts() {
+      return accounts;
+   }
+
+   public void setAccounts(Collection<BankAccount> accounts) {
+      this.accounts = accounts;
+   }
+
+   public void addAccountToCustomer(BankAccount bankAccount){
+      this.getAccounts().add(bankAccount);
    }
 }
