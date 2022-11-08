@@ -37,10 +37,6 @@ public class Customer {
 
    private String password;
 
-   @JsonIgnore
-   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-   private Collection<BankAccount> accounts;
-
    public Customer(String firstName, String lastName, LocalDate birthDate, String address, String phoneNumber, String email, String password, ArrayList<BankAccount> bankAccounts){
       this.firstName = firstName;
       this.lastName = lastName;
@@ -49,7 +45,6 @@ public class Customer {
       this.phoneNumber = phoneNumber;
       this.email = email;
       this.password = password;
-      this.accounts = bankAccounts;
    }
 
    public Customer(){
@@ -116,15 +111,4 @@ public class Customer {
       this.password = password;
    }
 
-   public Collection<BankAccount> getAccounts() {
-      return accounts;
-   }
-
-   public void setAccounts(Collection<BankAccount> accounts) {
-      this.accounts = accounts;
-   }
-
-   public void addAccountToCustomer(BankAccount bankAccount){
-      this.getAccounts().add(bankAccount);
-   }
 }

@@ -1,9 +1,10 @@
 package com.mabanque.app;
 
+import com.mabanque.app.controller.customer.CommandCustomer;
 import com.mabanque.app.entities.Customer;
-import com.mabanque.app.model.CustomerMapper;
+import com.mabanque.app.controller.customer.RequestCustomerValidator;
 import com.mabanque.app.repository.CustomerRepository;
-import com.mabanque.app.services.CustomerService;
+import com.mabanque.app.services.customer.CustomerService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -30,7 +31,7 @@ public class CustomerServiceTest {
 
     private AutoCloseable autoCloseable;
 
-    private CustomerMapper customerMapper;
+    private RequestCustomerValidator requestCustomerValidator;
 
     @BeforeEach
     void setUp(){
@@ -47,16 +48,16 @@ public class CustomerServiceTest {
     @DisplayName("check if customer is saved with the right properties")
     public void when_save_customer_it_should_return_customer(){
         //given
-        customerMapper = new CustomerMapper("test","azerty123", LocalDate.of(1992, Month.JUNE, 14),"3 sq jacques babinet","061010101010","test1@hotmail.fr","test");
-
+        requestCustomerValidator = new RequestCustomerValidator("test","azerty123", LocalDate.of(1992, Month.JUNE, 14),"3 sq jacques babinet","061010101010","test1@hotmail.fr","test");
+        CommandCustomer commandCustomer = requestCustomerValidator.toCommandCustomer();
         //when
-        Customer savedCustomer = customerService.saveCustomer(customerMapper);
+        Customer savedCustomer = customerService.saveCustomer(commandCustomer);
 
         //then
         //ArgumentCaptor<Customer> customerArgumentCaptor = ArgumentCaptor.forClass(Customer.class);
         //verify(customerRepositoryMock).save(customerArgumentCaptor.capture());
-        assertThat(savedCustomer.getFirstName()).isEqualTo(customerMapper.getFirstName());
-        assertEquals(savedCustomer.getBirthDate(),customerMapper.getBirthDate());
+        assertThat(savedCustomer.getFirstName()).isEqualTo(commandCustomer.getFirstName());
+        assertEquals(commandCustomer.getBirthDate(),savedCustomer.getBirthDate());
     }
 
 

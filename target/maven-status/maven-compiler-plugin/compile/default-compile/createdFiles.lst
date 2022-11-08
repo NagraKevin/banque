@@ -1,0 +1,17 @@
+com\mabanque\app\repository\BankAccountRepository.class
+com\mabanque\app\services\bankAccount\BankAccountService.class
+com\mabanque\app\services\customer\CustomerService.class
+com\mabanque\app\entities\BankAccount.class
+com\mabanque\app\controller\customer\CommandCustomer.class
+com\mabanque\app\repository\CustomerRepository.class
+com\mabanque\app\controller\customer\CustomerController.class
+com\mabanque\app\services\bankAccount\Iban4jNumberGenerator.class
+com\mabanque\app\services\bankAccount\interfaces\AccountNumberGenerator.class
+com\mabanque\app\services\bankAccount\Iban4JNumberGenerator2.class
+com\mabanque\app\services\customer\RegisterCustomerWithAccountService.class
+com\mabanque\app\services\bankAccount\interfaces\IbanNumberGenerator.class
+com\mabanque\app\entities\Customer.class
+com\mabanque\app\controller\customer\RequestCustomerValidator.class
+com\mabanque\app\services\bankAccount\AccountNumberGenerator.class
+com\mabanque\app\AppApplication.class
+com\mabanque\app\configuration\CompositionRoot.class

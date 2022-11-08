@@ -38,6 +38,7 @@ public class BankAccount {
         this.amount = amount;
         this.maxAmount = maxAmount;
         this.customer = customer;
+
     }
 
     public BankAccount() {
